@@ -66,7 +66,8 @@ export const config = {
             "appium:deviceName": "nightwatch-android-11",
             "appium:platformVersion": "11.0",
             "appium:automationName": "uiautomator2",
-            "appium:app": "app/wdio.apk"
+            "appium:app": "app/wdio.apk",
+            "appium:autoGrantPermissions": true
         }
     ],
 
