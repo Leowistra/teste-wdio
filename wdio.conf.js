@@ -51,23 +51,28 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [
-/*         {
-            // Configurações para aplicação hibrida
-            platformName: 'Android',
-            browserName: 'Chrome',
-            'appium:deviceName': 'nightwatch-android-11',
-            'appium:platformVersion': '11.0',
-            'appium:automationName': 'UiAutomator2',
-            'appium:chromedriverAutodownload': true,
-            'appium:chromedriverExecutable': 'chromedriver-mobile/chromedriver.exe'
-        }, */
+        /*         {
+                    // Configurações para aplicação hibrida
+                    platformName: 'Android',
+                    browserName: 'Chrome',
+                    'appium:deviceName': 'nightwatch-android-11',
+                    'appium:platformVersion': '11.0',
+                    'appium:automationName': 'UiAutomator2',
+                    'appium:chromedriverAutodownload': true,
+                    'appium:chromedriverExecutable': 'chromedriver-mobile/chromedriver.exe'
+                }, */
         {
             "platformName": "Android",
             "appium:deviceName": "nightwatch-android-11",
             "appium:platformVersion": "11.0",
             "appium:automationName": "uiautomator2",
-            "appium:app": "app/wdio.apk",
-            "appium:autoGrantPermissions": true
+            //"appium:app": "app/wdio.apk",
+            'appium:appPackage': 'com.wdiodemoapp',
+            'appium:appActivity': '.MainActivity',
+
+            'appium:autoGrantPermissions': true,
+            'appium:ignoreHiddenApiPolicyError': true,
+            'appium:autoAcceptAlerts': true
         }
     ],
 
