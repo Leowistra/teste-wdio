@@ -12,7 +12,7 @@ class LoginPage {
     get botaoLogin() {
         return $('~button-LOGIN')
     }
-    get mensagemSucesso() {
+    get mensagem() {
         return $('id=android:id/message')
     }
     get mensagemErro() {
@@ -24,6 +24,16 @@ class LoginPage {
         await this.menuLogin.click()
     }
 
+    async preencherLogin() {
+        // TO DO: melhorar o método
+        await this.campoEmail.setValue('teste@teste.com')
+        await this.campoSenha.setValue('senha@123')
+        await this.botaoLogin.click()
+    }
+
+    async mensagemAlerta() {
+        return await this.mensagem.getText()
+    }
 
 }
 
