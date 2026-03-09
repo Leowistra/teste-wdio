@@ -6,19 +6,23 @@ describe('Funcionalidade: Login', () => {
         await driver.reloadSession();
     });
 
-    it('Deve fazer login com sucesso', async () => {
+    beforeEach(async () => {
         await loginPage.abrirMenu()
-        await loginPage.preencherLogin()
+    });
+
+    it('Deve fazer login com sucesso', async () => {
+        await loginPage.preencherLogin('teste@teste.com', 'senha@123')
         await expect(await loginPage.mensagemAlerta()).toEqual('You are logged in!')
     });
 
     it('Deve falhar ao fazer login com email inválido', async () => {
-        await loginPage.abrirMenu()
-        await $('~input-email').setValue('teste@teste')
-        await $('~input-password').setValue('senha@123')
-        await $('~button-LOGIN').click()
-        const mensagem = await $('//android.widget.TextView[@text="Please enter a valid email address"]')
-        expect(mensagem).toBeDisplayed()
+        await loginPage.preencherLogin('teste@teste', 'senha@123')
+        await loginPage.mensagemErro('Please enter a valid email address')
     });
 
+    it('Deve falhar ao fazer login com senha inválida', async () => {
+        await loginPage.preencherLogin('teste@teste.com', '1234')
+        await loginPage.mensagemErro('Please enter at least 8 characters')
+
+    });
 });
