@@ -10,6 +10,8 @@
     "appium-uiautomator2-driver": "^6.8.2"
   },
   "scripts": {
-    "test": "wdio run ./wdio.conf.js"
+    "test": "wdio run ./wdio.conf.js",
+    "test:forms": "wdio run wdio.conf.js --spec ./test/specs/forms.spec.js",
+    "test:login": "wdio run wdio.conf.js --spec ./test/specs/login.spec.js"
   }
 }
