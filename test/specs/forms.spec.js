@@ -1,4 +1,4 @@
-import formPage from '../pageobjects/forms.spec'
+import formPage from '../pageobjects/forms.page'
 
 describe('Funcionalidade: Teste de Formulário', () => {
 
@@ -13,8 +13,8 @@ describe('Funcionalidade: Teste de Formulário', () => {
     });
 
     it('Deve escolher e validar dropdown', async () => {
-        await formPage.selecionarOpção()
-        expect(await formPage.validarOpção()).toEqual('Appium is awesome')
+        await formPage.selecionarOpção('This app is awesome')
+        expect(await formPage.validarOpção()).toEqual('This app is awesome')
         await driver.pause(5000)
     });
 
@@ -24,12 +24,12 @@ describe('Funcionalidade: Teste de Formulário', () => {
         await botaoOnOff.click()
         await driver.pause(5000)
         //Trocar para Off
-        await driver.action('pointer')
-            .move({ duration: 0, x: 226, y: 1283 })
-            .down({ button: 0 })
-            .move({ duration: 1000, x: 162, y: 1283 })
-            .up({ button: 0 })
-            .perform();
+        await browser.swipe ({
+            direction: 'left',
+            duration: 5000,
+            percent: 0.1,
+            scrollableElement: botaoOnOff,
+        })
         await driver.pause(5000)
     });
 });
